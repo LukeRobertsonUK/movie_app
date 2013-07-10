@@ -1,29 +1,39 @@
-<h1>Listing players</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Birth date</th>
-    <th>Sex</th>
-    <th>Biography</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<h1>Luvies</h1>
 
 <% @players.each do |player| %>
-  <tr>
-    <td><%= player.name %></td>
-    <td><%= player.birth_date %></td>
-    <td><%= player.sex %></td>
-    <td><%= player.biography %></td>
-    <td><%= link_to 'Show', player %></td>
-    <td><%= link_to 'Edit', edit_player_path(player) %></td>
-    <td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+  <ul>
+    <li><%=player.name%><br>
+          <% if player.sex %>
+          <%= player.sex %>
+          <%end%>
+          <% if player.birth_date %>,
+          aged
+          <%= "#{distance_of_time_in_words(Time.now, player.birth_date)}"%>
+          <%end%>
+          <br>
+          <%unless player.movies.blank? %>
+          Movies:
+          <% player.movies.order('release_date DESC').each do |movie|%>
+              <%=movie.name%>;
+            <%end%>
+            <%end%>
+            <br>
+           <%unless player.roles.blank? %>
+           Roles:
+          <% player.roles.each do |role|%>
+              <%=role.name%>;
+            <%end%>
+            <%end%>
+
+        <br>
+        <%= link_to 'More Details', player %> |
+        <%= link_to 'Edit', edit_player_path(player) %> |
+        <%= link_to 'Delete', player, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+     </ul>
 <% end %>
-</table>
+
 
 <br />
 
-<%= link_to 'New Player', new_player_path %>
+<%= link_to 'Add a New Luvie!', new_player_path %>

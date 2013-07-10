@@ -1,5 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 
+<h2><%= @movies_player.player.name%></h2>
+<h4>in</h4>
+<h2><%=@movies_player.movie.name %></h2>
+<h4>as
+  <%=@movies_player.role.name%>
+</h4>
+<p><%=@movies_player.involvement %></p>
+
 <%= link_to 'Edit', edit_movies_player_path(@movies_player) %> |
 <%= link_to 'Back', movies_players_path %>
+
+

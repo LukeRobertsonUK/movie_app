@@ -20,6 +20,23 @@
   <%= @player.biography %>
 </p>
 
+<% unless @player.movies.blank? %>
+<b>Filmography:</b>
+
+  <ul>
+      <% @player.movies.order('release_date DESC').each do |movie|%>
+
+              <%=movie.release_date%>:
+              <%=movie.movies_players.find_by_player_id(@player[:id]).role.name%>,
+              <%=movie.name%>
+
+
+
+              <br>
+
+            <%end%>
+
+  <%end%>
 
 <%= link_to 'Edit', edit_player_path(@player) %> |
 <%= link_to 'Back', players_path %>

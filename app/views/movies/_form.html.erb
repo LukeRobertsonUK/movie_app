@@ -1,41 +1,52 @@
 <%= form_for(@movie) do |f| %>
-  <% if @movie.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+<% if @movie.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
 
-      <ul>
-      <% @movie.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <ul>
+    <% @movie.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :release_date %><br />
-    <%= f.date_select :release_date %>
-  </div>
-  <div class="field">
-    <%= f.label :gross_takings %><br />
-    <%= f.text_field :gross_takings %>
-  </div>
-  <div class="field">
-    <%= f.label :certificate %><br />
-    <%= f.text_field :certificate %>
-  </div>
-  <div class="field">
-    <%= f.label :review_score %><br />
-    <%= f.number_field :review_score %>
-  </div>
-  <div class="field">
-    <%= f.label :plot_summary %><br />
-    <%= f.text_area :plot_summary %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="field">
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</div>
+<div class="field">
+  <%= f.label :genre %>
+  <%= f.select(:genre_id, Genre.all.map {|c| [c.name, c.id]}) %>
+</div>
+
+
+<div class="field">
+  <%= f.label :studio, "Studio" %>
+  <%= f.select(:studio_id, Studio.all.map {|c| [c.name, c.id]}) %>
+</div>
+
+<div class="field">
+  <%= f.label :release_date %>
+  <%= f.date_select :release_date, {start_year: 1800, end_year: 2020 } %>
+</div>
+<div class="field">
+  <%= f.label :gross_takings %>
+  <%= f.text_field :gross_takings %>
+</div>
+<div class="field">
+  <%= f.label :certificate %>
+  <%= f.text_field :certificate %>
+</div>
+<div class="field">
+  <%= f.label :review_score %>
+  <%= f.number_field :review_score %>
+</div>
+<div class="field">
+  <%= f.label :plot_summary %>
+  <%= f.text_area :plot_summary %>
+</div>
+<div class="actions">
+  <%= f.submit %>
+</div>
 <% end %>

@@ -4,4 +4,5 @@ class Movie < ActiveRecord::Base
   belongs_to :studio
   has_many :movies_players
   has_many :players, :through => :movies_players
+  has_many :roles, :through => :movies_players
 end

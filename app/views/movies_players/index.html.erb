@@ -1,21 +1,20 @@
-<h1>Listing movies_players</h1>
+<h2>Movie-Luvie Combos!</h2>
 
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
 <% @movies_players.each do |movies_player| %>
-  <tr>
-    <td><%= link_to 'Show', movies_player %></td>
-    <td><%= link_to 'Edit', edit_movies_player_path(movies_player) %></td>
-    <td><%= link_to 'Destroy', movies_player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+  <ul>
+    <li><%=movies_player.player.name%> in
+        <%=movies_player.movie.name%> as
+        <%=movies_player.role.name%>
+        <br>
+        <%= link_to 'More Details', movies_player %> |
+        <%= link_to 'Edit', edit_movies_player_path(movies_player) %> |
+        <%= link_to 'Delete', movies_player, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+     </ul>
 <% end %>
-</table>
+
 
 <br />
 
-<%= link_to 'New Movies player', new_movies_player_path %>
+<%= link_to 'Make a New Combo!', new_movies_player_path %>
