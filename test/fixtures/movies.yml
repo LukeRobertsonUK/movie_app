@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  release_date: 2013-07-10
+  gross_takings: 9.99
+  certificate: MyString
+  review_score: 1
+  plot_summary: MyText
+
+two:
+  name: MyString
+  release_date: 2013-07-10
+  gross_takings: 9.99
+  certificate: MyString
+  review_score: 1
+  plot_summary: MyText

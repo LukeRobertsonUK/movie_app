@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @player.name %>
+</p>
+
+<p>
+  <b>Birth date:</b>
+  <%= @player.birth_date %>
+</p>
+
+<p>
+  <b>Sex:</b>
+  <%= @player.sex %>
+</p>
+
+<p>
+  <b>Biography:</b>
+  <%= @player.biography %>
+</p>
+
+
+<%= link_to 'Edit', edit_player_path(@player) %> |
+<%= link_to 'Back', players_path %>

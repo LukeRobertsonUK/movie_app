@@ -1,0 +1,40 @@
+<%= form_for(@movies_player) do |f| %>
+<% if @movies_player.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@movies_player.errors.count, "error") %> prohibited this movies_player from being saved:</h2>
+
+  <ul>
+    <% @movies_player.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+
+<div class="field">
+  <%= f.label :movie_id, "Pick a Movie" %>
+  <%= f.select(:movie_id, Movie.all.map {|c| [c.name, c.id]}) %>
+</div>
+
+<div class="field">
+  <%= f.label :player_id, "Pick a Luvie" %>
+  <%= f.select(:player_id, Player.all.map {|c| [c.name, c.id]}) %>
+</div>
+
+<div class="field">
+  <%= f.label :role_id, "What was the Luvie's role?" %>
+  <%= f.select(:role_id, Role.all.map {|c| [c.name, c.id]}) %>
+</div>
+<div class="field">
+  <%= f.label :involvement, "More Details..." %>
+  <%= f.text_area :involvement, id: "involvement" %>
+</div>
+
+
+
+
+<div class="actions">
+  <%= f.submit %>
+</div>
+<% end %>
