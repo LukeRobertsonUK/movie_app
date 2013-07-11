@@ -24,11 +24,11 @@
 <b>Filmography:</b>
 
   <ul>
-      <% @player.movies.order('release_date DESC').each do |movie|%>
+      <% @player.movies_players.joins(:movie).order('movies.release_date DESC').each do |movies_player|%>
 
-              <%=movie.release_date%>:
-              <%=movie.movies_players.find_by_player_id(@player[:id]).role.name%>,
-              <%=movie.name%>
+              <%=movies_player.movie.release_date%>:
+              <%=movies_player.role.name%>,
+              <%=movies_player.movie.name%>
 
 
 

@@ -45,10 +45,10 @@
   <b>Luvies List</b>
 </p>
 <ul>
-  <% @movie.players.each do |player| %>
+  <% @movie.movies_players.each do |movies_player| %>
   <li>
-    <%= player.name %>:
-    <%= player.movies_players.find_by_player_id(player[:id]).role.name%>
+    <%= movies_player.player.name %>:
+    <%= movies_player.role.name%>
   </li>
 </ul>
 <%end%>
